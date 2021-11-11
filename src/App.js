@@ -18,7 +18,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/dashboard/*" element={<PrivateRoute><Dashboard></Dashboard></PrivateRoute>}></Route>
-          <Route path="/shipping" element={<PrivateRoute><Shipping></Shipping></PrivateRoute>}></Route>
+          <Route path="/shipping/:orderId" element={<PrivateRoute><Shipping></Shipping></PrivateRoute>}></Route>
           <Route path="/purchase-info/:id" element={<PrivateRoute><PurchaseInfo></PurchaseInfo></PrivateRoute>}></Route>
           <Route path="/explore" element={<ExploreProducts></ExploreProducts>}></Route>
           <Route path="/registration" element={<Registration></Registration>}></Route>

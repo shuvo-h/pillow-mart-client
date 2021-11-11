@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const ExploreProduct = (props) => {
     const {title,str,photoUrl,price,_id} = props.product;
-    console.log(props.product); 
+    
     return (
         <Grid item xs={12} sm={6} md={4}>
             <Card sx={{ maxWidth: 345 }}>

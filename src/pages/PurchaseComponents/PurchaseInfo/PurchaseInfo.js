@@ -8,7 +8,7 @@ import PurchaseForm from '../PurchaseForm/PurchaseForm';
 const PurchaseInfo = () => {
     const {id} = useParams();
     const [product,setProduct] = useState({});
-    const {Fabric, color, pattern, photoUrl, price, shape, size, size_metric, str, title } = product;
+    const {Fabric, color, pattern, photoUrl, price, shape, size, size_metric, str, title, _id } = product;
     useEffect(()=>{
         fetch(`http://localhost:5000/products/${id}`)
             .then(res=>res.json())
@@ -36,7 +36,7 @@ const PurchaseInfo = () => {
                         </List>
                     </Grid>
                 </Grid>
-                <PurchaseForm title={title}></PurchaseForm>
+                <PurchaseForm title={title} productId={_id}></PurchaseForm>
             </Container>
         </>
     );

@@ -29,11 +29,14 @@ import AddProduct from '../AdminDashboardPages/AddProduct/AddProduct';
 import MakeAdmin from '../AdminDashboardPages/MakeAdmin/MakeAdmin';
 import ManageProducts from '../AdminDashboardPages/ManageProducts/ManageProducts';
 import { Button } from '@mui/material';
+import useAuth from '../../../hooks/useAuth';
 
 
 const drawerWidth = 240;
 
 function DashboardDrawer(props) {
+  const {isAdmin, logOut} = useAuth();
+  console.log(isAdmin);
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -56,22 +59,24 @@ function DashboardDrawer(props) {
     <div>
       <Toolbar />
       <Divider />
-      <List>
-        <ListItem><NavLink to={`/home`} style={handleActiveNav}><HomeIcon sx={{mr:2}} color="secondary"/>Go Home</NavLink></ListItem>
-        <ListItem><NavLink to={`pay`} style={handleActiveNav}><PaymentsIcon sx={{mr:2}} color="secondary"/>Pay</NavLink></ListItem>
-        <ListItem><NavLink to={`my-orders`} style={handleActiveNav}><ListAltIcon sx={{mr:2}} color="secondary"/>My Orders</NavLink></ListItem>
-        <ListItem><NavLink to="review" style={handleActiveNav}><ReviewsIcon sx={{mr:2}} color="secondary"/>Review</NavLink></ListItem>
-        <ListItem><Button sx={{p:0}}><LogoutIcon sx={{mr:2}} color="secondary"/>Logout</Button></ListItem>
-      </List>
-      <Divider />
-      <List>
-        <ListItem><NavLink to={`/home`} style={handleActiveNav}><HomeIcon sx={{mr:2}} color="secondary"/>Go Home</NavLink></ListItem>
-        <ListItem><NavLink to="manage-orders" style={handleActiveNav}><ManageAccountsIcon sx={{mr:2}} color="secondary"/>Manage All Orders</NavLink></ListItem>
-        <ListItem><NavLink to="add-products" style={handleActiveNav}><AddIcon sx={{mr:2}} color="secondary"/>Add a Product</NavLink></ListItem>
-        <ListItem><NavLink to="make-admin" style={handleActiveNav}><AddReactionIcon sx={{mr:2}} color="secondary"/>Make Admin</NavLink></ListItem>
-        <ListItem><NavLink to="manage-products" style={handleActiveNav}><DashboardIcon sx={{mr:2}} color="secondary"/>Manage Products</NavLink></ListItem>
-        <ListItem><Button sx={{p:0}}><LogoutIcon sx={{mr:2}} color="secondary"/>Logout</Button></ListItem>
-      </List>
+      {
+        !isAdmin ? <List>
+              <ListItem><NavLink to={`/home`} style={handleActiveNav}><HomeIcon sx={{mr:2}} color="secondary"/>Go Home</NavLink></ListItem>
+              <ListItem><NavLink to={`pay`} style={handleActiveNav}><PaymentsIcon sx={{mr:2}} color="secondary"/>Pay</NavLink></ListItem>
+              <ListItem><NavLink to={`my-orders`} style={handleActiveNav}><ListAltIcon sx={{mr:2}} color="secondary"/>My Orders</NavLink></ListItem>
+              <ListItem><NavLink to="review" style={handleActiveNav}><ReviewsIcon sx={{mr:2}} color="secondary"/>Review</NavLink></ListItem>
+              <ListItem><Button onClick={logOut} sx={{p:0}}><LogoutIcon sx={{mr:2}} color="secondary"/>Logout</Button></ListItem>
+            </List>
+            : <List>
+              <ListItem><NavLink to={`/home`} style={handleActiveNav}><HomeIcon sx={{mr:2}} color="secondary"/>Go Home</NavLink></ListItem>
+              <ListItem><NavLink to="manage-orders" style={handleActiveNav}><ManageAccountsIcon sx={{mr:2}} color="secondary"/>Manage All Orders</NavLink></ListItem>
+              <ListItem><NavLink to="add-products" style={handleActiveNav}><AddIcon sx={{mr:2}} color="secondary"/>Add a Product</NavLink></ListItem>
+              <ListItem><NavLink to="make-admin" style={handleActiveNav}><AddReactionIcon sx={{mr:2}} color="secondary"/>Make Admin</NavLink></ListItem>
+              <ListItem><NavLink to="manage-products" style={handleActiveNav}><DashboardIcon sx={{mr:2}} color="secondary"/>Manage Products</NavLink></ListItem>
+              <ListItem><Button onClick={logOut} sx={{p:0}}><LogoutIcon sx={{mr:2}} color="secondary"/>Logout</Button></ListItem>
+            </List>
+      }
+      
       
     </div>
   );

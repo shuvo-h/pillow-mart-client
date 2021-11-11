@@ -1,12 +1,60 @@
+import { Container, Grid, Typography } from '@mui/material';
 import { Box } from '@mui/system';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router';
 import NavigationBar from '../../Shared/NavBar/NavigationBar/NavigationBar';
 
 const Shipping = () => {
+    const {orderId} = useParams();
+    const [orderInfo,setOrderInfo] = useState({});
+    const [orderedProductInfo,setOrderedProductInfo] = useState({});
+    const {customerAddress, customerEmail, customerName,customerPhone,productName,quantity, productId } = orderInfo || {};
+    const {Fabric, color,pattern, photoUrl,price,shape,size,size_metric,title} = orderedProductInfo || {};
+    
+    useEffect(()=>{
+        fetch(`http://localhost:5000/orders/${orderId}`)
+            .then(res=>res.json())
+            .then(data=>{
+                if (data._id) {
+                    setOrderInfo(data)
+                }
+            })
+    },[orderId])
+
+    useEffect(()=>{
+        fetch(`http://localhost:5000/products/${productId}`)
+            .then(res=>res.json())
+            .then(data=>setOrderedProductInfo(data))
+    },[productId])
+
     return (
         <Box sx={{mt:8}}>
             <NavigationBar></NavigationBar>
-                going to shipping (show the details information here of the order place form)
+                <Typography sx={{fontWeight:700}} variant="h5">
+                    We are Processing your shipment:
+                </Typography>
+                <Container>
+                    <Box>
+                        <img src={photoUrl} alt="" />
+                    </Box>
+                    <Typography>
+                        Your ordered and shipment information:
+                    </Typography>
+                    <Grid container spacing={2}>
+                        <Grid item xs={12} sm={6}>
+                            Name: {customerName},
+                            Email: {customerEmail}
+                            Contact Number: {customerPhone}
+                            Shipping Address: {customerAddress}
+                        </Grid>
+                        <Grid item xs={12} sm={6}>
+                            Product Name: {title}
+                            Quantity: {quantity}
+                            price: {price}
+                            color: {color}
+                        </Grid>
+                    </Grid>
+                </Container>
         </Box>
     );
 };
