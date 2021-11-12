@@ -25,7 +25,7 @@ const PurchaseForm = (props) => {
         orderInfo.status = "Pending";
         //send the data to database
         //wait here to get response from database with the submitted id
-        fetch("http://localhost:5000/orders",{
+        fetch("https://fast-bastion-88806.herokuapp.com/orders",{
             method:"POST",
             headers:{
                 "content-type":"application/json"

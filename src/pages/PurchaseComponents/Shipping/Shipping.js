@@ -12,7 +12,7 @@ const Shipping = () => {
     const {Fabric, color,pattern, photoUrl,price,shape,size,size_metric,title} = orderedProductInfo || {};
     
     useEffect(()=>{
-        fetch(`http://localhost:5000/orders/${orderId}`)
+        fetch(`https://fast-bastion-88806.herokuapp.com/orders/${orderId}`)
             .then(res=>res.json())
             .then(data=>{
                 if (data._id) {
@@ -22,7 +22,7 @@ const Shipping = () => {
     },[orderId])
 
     useEffect(()=>{
-        fetch(`http://localhost:5000/products/${productId}`)
+        fetch(`https://fast-bastion-88806.herokuapp.com/products/${productId}`)
             .then(res=>res.json())
             .then(data=>setOrderedProductInfo(data))
     },[productId])

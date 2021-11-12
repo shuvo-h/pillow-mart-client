@@ -10,7 +10,7 @@ const MyOrders = () => {
     
     useEffect(()=>{
         
-            fetch(`http://localhost:5000/ordersList?email=${user.email}`)
+            fetch(`https://fast-bastion-88806.herokuapp.com/ordersList?email=${user.email}`)
                 .then(res=>res.json())
                 .then(data=>setMyOrders(data))
             
@@ -21,7 +21,7 @@ const MyOrders = () => {
         const confirm = window.confirm("Are you sure to delete this order?");
         
         if (confirm) {
-            fetch(`http://localhost:5000/orders/${id}`,{
+            fetch(`https://fast-bastion-88806.herokuapp.com/orders/${id}`,{
                 method:"DELETE"
             })
                 .then(res=>res.json())

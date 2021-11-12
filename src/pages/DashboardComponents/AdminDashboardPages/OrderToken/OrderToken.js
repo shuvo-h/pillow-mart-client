@@ -10,7 +10,7 @@ const OrderToken = (props) => {
     
     useEffect(()=>{
         if (productId) {
-            fetch(`http://localhost:5000/products/${productId}`)
+            fetch(`https://fast-bastion-88806.herokuapp.com/products/${productId}`)
             .then(res=>res.json())
             .then(data=>setProductInfo(data))
         }
@@ -18,7 +18,7 @@ const OrderToken = (props) => {
 
     const handleDelivery = (id) =>{
         const updateStatus = {status : "Delivered"};
-        fetch(`http://localhost:5000/orders/${id}`,{
+        fetch(`https://fast-bastion-88806.herokuapp.com/orders/${id}`,{
             method:"PUT",
             headers:{
                 "content-type":"application/json"

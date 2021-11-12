@@ -30,7 +30,7 @@ const Order = (props) => {
     const {photoUrl,price, size, size_metric, Fabric, color} = orderedProduct;
     
     useEffect(()=>{
-        fetch(`http://localhost:5000/products/${productId}`)
+        fetch(`https://fast-bastion-88806.herokuapp.com/products/${productId}`)
             .then(res=>res.json())
             .then(data=>setOrderedProduct(data))
     },[productId])

@@ -68,7 +68,7 @@ const useFirebase = () => {
 
     // save new registration data to database 
     const saveRegData = (userFullObjInfo,e) =>{
-        fetch('http://localhost:5000/users',{
+        fetch('https://fast-bastion-88806.herokuapp.com/users',{
             method:"POST",
             headers:{
                 "content-type":"application/json"
@@ -87,7 +87,7 @@ const useFirebase = () => {
 
     // set if a user is Admin or not 
     useEffect(()=>{
-        fetch(`http://localhost:5000/users?existEmail=${user.email}`)
+        fetch(`https://fast-bastion-88806.herokuapp.com/users?existEmail=${user.email}`)
             .then(res=>res.json())
             .then(data=>{
                 if (data.role === "admin") {

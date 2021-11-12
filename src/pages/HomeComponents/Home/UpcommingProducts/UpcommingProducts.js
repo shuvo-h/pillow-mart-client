@@ -6,7 +6,7 @@ import UpcommingProduct from "../UpcommingProduct/UpcommingProduct";
 const UpcommingProducts = () => {
     const [upcommingProducts,setUpcommingProducts] = useState([]);
     useEffect(()=>{
-        fetch("http://localhost:5000/upcommingProducts")
+        fetch("https://fast-bastion-88806.herokuapp.com/upcommingProducts")
             .then(res=>res.json())
             .then(data=>setUpcommingProducts(data))
 

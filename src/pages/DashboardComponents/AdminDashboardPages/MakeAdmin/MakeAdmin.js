@@ -12,7 +12,7 @@ const MakeAdmin = () => {
         setReqAdminInfo(newReqAdminInfo);
     }
     const handleMakeAdmin = e =>{
-        fetch(`http://localhost:5000/users?existEmail=${reqAdminInfo.reqEmail}`)
+        fetch(`https://fast-bastion-88806.herokuapp.com/users?existEmail=${reqAdminInfo.reqEmail}`)
             .then(res=>res.json())
             .then(data=>{
                 if (data._id) {
@@ -25,7 +25,7 @@ const MakeAdmin = () => {
 
     const createAdmin = (id,e) =>{
         const updateRole = {role : "admin"};
-        fetch(`http://localhost:5000/users/${id}`,{
+        fetch(`https://fast-bastion-88806.herokuapp.com/users/${id}`,{
             method:"PUT",
             headers:{
                 "content-type":"application/json"

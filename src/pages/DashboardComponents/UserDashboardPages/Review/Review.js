@@ -27,7 +27,7 @@ const Review = () => {
             revNamer: user.displayName,
             revImg: user.photoURL
         }
-        fetch('http://localhost:5000/reviews',{
+        fetch('https://fast-bastion-88806.herokuapp.com/reviews',{
             method:"POST",
             headers:{
                 "content-type":"application/json"
@@ -53,7 +53,7 @@ const Review = () => {
     }
     // load user specifiq reviews 
     useEffect(()=>{
-        fetch(`http://localhost:5000/reviews/userReview?reviewerEmail=${user.email}`)
+        fetch(`https://fast-bastion-88806.herokuapp.com/reviews/userReview?reviewerEmail=${user.email}`)
             .then(res=>res.json())
             .then(data=>setUserAllReview(data.reverse()))
     },[user.email])
@@ -61,7 +61,7 @@ const Review = () => {
     const handleReviewDelete = (id) =>{
         const confirm = window.confirm("Are you sure to delete this review?");
         if (confirm) {
-            fetch(`http://localhost:5000/reviews/${id}`,{
+            fetch(`https://fast-bastion-88806.herokuapp.com/reviews/${id}`,{
                 method:"DELETE"
             })
                 .then(res=>res.json())

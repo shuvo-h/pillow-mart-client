@@ -10,7 +10,7 @@ const PurchaseInfo = () => {
     const [product,setProduct] = useState({});
     const {Fabric, color, pattern, photoUrl, price, shape, size, size_metric, str, title, _id } = product;
     useEffect(()=>{
-        fetch(`http://localhost:5000/products/${id}`)
+        fetch(`https://fast-bastion-88806.herokuapp.com/products/${id}`)
             .then(res=>res.json())
             .then(data=>setProduct(data))
     },[id])

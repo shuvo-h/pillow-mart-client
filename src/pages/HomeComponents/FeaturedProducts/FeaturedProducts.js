@@ -5,7 +5,7 @@ import FeaturedProduct from '../FeaturedProduct/FeaturedProduct';
 const FeaturedProducts = () => {
     const [featuredProducts,setFeaturedProducts] = useState([]);
     useEffect(()=>{
-        fetch("http://localhost:5000/products")
+        fetch("https://fast-bastion-88806.herokuapp.com/products")
             .then(res=>res.json())
             .then(data=>{
                 const shortedProducts = data.slice(0,6);

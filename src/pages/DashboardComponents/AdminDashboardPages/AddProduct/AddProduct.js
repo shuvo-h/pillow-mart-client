@@ -14,7 +14,7 @@ const AddProduct = () => {
     }
     
     const handleAddProduct = e =>{
-        fetch('http://localhost:5000/products',{
+        fetch('https://fast-bastion-88806.herokuapp.com/products',{
             method:"POST",
             headers:{
                 "content-type":"application/json"

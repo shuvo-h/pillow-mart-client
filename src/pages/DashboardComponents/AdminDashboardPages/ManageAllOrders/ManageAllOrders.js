@@ -7,7 +7,7 @@ const ManageAllOrders = () => {
     const [allOrders,setAllOrders] = useState([]);
     
     useEffect(()=>{
-        fetch("http://localhost:5000/orders")
+        fetch("https://fast-bastion-88806.herokuapp.com/orders")
             .then(res=>res.json())
             .then(data=>setAllOrders(data)) 
     },[])
@@ -16,7 +16,7 @@ const ManageAllOrders = () => {
         const confirm = window.confirm("Are you sure to delete this order?");
         
         if (confirm) {
-            fetch(`http://localhost:5000/orders/${id}`,{
+            fetch(`https://fast-bastion-88806.herokuapp.com/orders/${id}`,{
                 method:"DELETE"
             })
                 .then(res=>res.json())
