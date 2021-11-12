@@ -17,13 +17,13 @@ const MakeAdmin = () => {
             .then(data=>{
                 if (data._id) {
                     // call create admin function 
-                    createAdmin(data._id)
+                    createAdmin(data._id,e)
                 }
             })
         e.preventDefault();
     }
 
-    const createAdmin = (id) =>{
+    const createAdmin = (id,e) =>{
         const updateRole = {role : "admin"};
         fetch(`http://localhost:5000/users/${id}`,{
             method:"PUT",
@@ -35,7 +35,8 @@ const MakeAdmin = () => {
         .then(res=>res.json())
         .then(data=>{
             if (data.modifiedCount > 0) {
-                alert("Welcome! Admin role given successfully.")
+                alert("Welcome! Admin role given successfully.");
+                e.target.reset();
             }
         })
     }

@@ -13,8 +13,7 @@ const AddProduct = () => {
         setNewProduct(newProductInfo);
     }
     
-    const handleRegistration = e =>{
-        console.log(newProduct);
+    const handleAddProduct = e =>{
         fetch('http://localhost:5000/products',{
             method:"POST",
             headers:{
@@ -25,7 +24,8 @@ const AddProduct = () => {
             .then(res=>res.json())
             .then(data=>{
                 if (data.insertedId) {
-                    alert("New product added Successfully!")
+                    alert("New product added Successfully!");
+                    e.target.reset();
                 }
             })
 
@@ -34,10 +34,10 @@ const AddProduct = () => {
     return (
         <Box sx={{p:2, display:"flex", flexDirection:"column",alignItems:"center"}}>
             <Typography sx={{my:2}} variant="h4" component="div">
-                Create an Account
+                Add A New Product
             </Typography>
-            <Box sx={{p:2, borderRadius:"10px", width:"fit-content", boxShadow:"2px 2px 10px 1px Magenta", backgroundColor:"Lavender"}}>
-                <form sx={{display:"flex", flexDirection: 'column' }} onSubmit={handleRegistration}> 
+            <Box sx={{p:2, borderRadius:"10px", width:"fit-content", boxShadow:"2px 2px 10px 1px Cyan", backgroundColor:"Lavender"}}>
+                <form sx={{display:"flex", flexDirection: 'column' }} onSubmit={handleAddProduct}> 
                     <Box sx={{my:1}}><TextField sx={{width:"350px"}} onBlur={handleOnBlur} name="title" type="text" id="title" label="Product Name" variant="standard" required/></Box>
                     <Box sx={{my:1}}><TextField sx={{width:"350px"}} onBlur={handleOnBlur} name="price" type="number" id="price" label="Price in Tk." variant="standard" required /></Box>
                     <Box sx={{my:1}}><TextField sx={{width:"350px"}} onBlur={handleOnBlur} name="color"  type="text" id="color" label="Color" variant="standard" required /></Box>

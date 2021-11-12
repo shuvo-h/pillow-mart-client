@@ -7,6 +7,7 @@ const OrderToken = (props) => {
     const {customerAddress, customerEmail, customerName, customerPhone, productId, productName, quantity, orderDate,status, _id} = props.order || {};
     const {photoUrl, price, size, size_metric} = productInfo || {};
     
+    
     useEffect(()=>{
         if (productId) {
             fetch(`http://localhost:5000/products/${productId}`)
@@ -28,6 +29,7 @@ const OrderToken = (props) => {
         .then(data=>{
             if (data.modifiedCount > 0) {
                 alert("Product is delivered successfully!");
+                window.location.reload();
             }
         })
     }
@@ -58,10 +60,10 @@ const OrderToken = (props) => {
             <Grid item xs={12} md={2}>
                 {
                     status === "Pending" ?
-                        <Button onClick={()=>handleDelivery(_id)} variant="outlined">Confirm shipping</Button>
-                    : <Button sx={{cursor:"not-allowed"}} variant="outlined">Delivered</Button>
+                        <Button sx={{backgroundColor:"Gold"}} onClick={()=>handleDelivery(_id)} variant="outlined">Confirm shipping</Button>
+                    : <Button sx={{cursor:"not-allowed", backgroundColor:"SpringGreen"}} variant="outlined">Delivered</Button>
                 }
-                <Button onClick={()=>props.handleOrderDelete(_id)} variant="outlined">Cancel Order</Button>
+                <Button sx={{mt:2,backgroundColor:"Tomato", }} onClick={()=>props.handleOrderDelete(_id)} variant="outlined">Cancel Order</Button>
             </Grid>
         </Grid>
     );

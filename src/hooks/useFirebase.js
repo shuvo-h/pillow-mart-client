@@ -10,7 +10,7 @@ const useFirebase = () => {
     const [isLoading,setIsloading]= useState(true);
 
     const auth = getAuth();
-    const registerNewUser = (newEmail,newPassword, newName, newPhotoUrl, newPhoneNumber,navigate,userFullObjInfo) =>{
+    const registerNewUser = (newEmail,newPassword, newName, newPhotoUrl, newPhoneNumber,navigate,userFullObjInfo,e) =>{
         setIsloading(true)
         createUserWithEmailAndPassword(auth, newEmail, newPassword,newName,newPhotoUrl, newPhoneNumber,navigate,userFullObjInfo)
             .then((userCredential)=>{
@@ -22,7 +22,7 @@ const useFirebase = () => {
                     phoneNumber: newPhoneNumber
                 })
                     .then(()=>{
-                        saveRegData(userFullObjInfo);
+                        saveRegData(userFullObjInfo,e);
                         navigate("/home");
                     })
             })
@@ -59,14 +59,15 @@ const useFirebase = () => {
         setIsloading(true);
         signOut(auth)
             .then(()=>{
-                setUser({})
+                setUser({});
+                setIsAdmin("");
             })
             .catch(error=>setError(error.message))
             .finally(()=>setIsloading(false))
     }
 
     // save new registration data to database 
-    const saveRegData = (userFullObjInfo) =>{
+    const saveRegData = (userFullObjInfo,e) =>{
         fetch('http://localhost:5000/users',{
             method:"POST",
             headers:{
@@ -77,7 +78,8 @@ const useFirebase = () => {
             .then(res=>res.json())
             .then(data=>{
                 if (data.insertedId) {
-                    alert("Registration Successful!")
+                    alert("Registration Successful!");
+                    e.target.reset();
                 }
             })
         return;

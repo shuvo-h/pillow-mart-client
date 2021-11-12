@@ -15,7 +15,7 @@ const FeaturedProduct = (props) => {
                     <Typography sx={{textAlign:"center"}} variant="h6">Price: ৳ {price}</Typography>
                 </CardContent>
                 <CardActions>
-                <Link to={`/purchase-info/${_id}`}><Button sx={{mx:"auto", my:2}} variant="contained" size="small">Buy Now</Button></Link>
+                <Link to={`/purchase-info/${_id}`} style={{display:"block", margin:"auto", textDecoration:"none"}}><Button sx={{mx:"auto", my:2}} variant="contained" size="small">Buy Now</Button></Link>
                 </CardActions>
             </Card>
         </Grid>

@@ -14,7 +14,7 @@ const FeaturedProducts = () => {
     },[])
     return (
         <Container sx={{mt:8}}>
-            <Typography sx={{py:3}} gutterBottom variant="h4" component="div">
+            <Typography sx={{py:3, textAlign:"center"}} gutterBottom variant="h4" component="div">
                 Featured Products
             </Typography>
             <Grid container spacing={2}>

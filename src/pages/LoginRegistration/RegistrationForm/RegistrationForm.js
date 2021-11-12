@@ -19,7 +19,7 @@ const RegistrationForm = () => {
     const handleRegistration = e =>{
         setError("")
         if (newUser.password === newUser.confirmPassword) {
-            registerNewUser(newUser.email, newUser.password, newUser.name,newUser.imgUrl, newUser.phoneNumber,navigate,newUser)
+            registerNewUser(newUser.email, newUser.password, newUser.name,newUser.imgUrl, newUser.phoneNumber,navigate,newUser,e)
         }else if (newUser.password !== newUser.confirmPassword) {
             setError("Password didn,t match.")
         }

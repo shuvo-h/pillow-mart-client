@@ -36,6 +36,23 @@ const NavigationBar = () => {
 
     const handleProfileOpen = e => setAnchorElProfile(e.currentTarget);
     const handleProfileClose = () => setAnchorElProfile(null);
+
+    const activeNaveItemStyle = ({isActive}) =>{
+        return { 
+            textDecoration:"none", 
+            padding:"10px 10px",
+            color: isActive ? "yellow" : "white"
+        }
+         
+    }
+    const activeNestedNavStyle = ({isActive}) =>{
+        return{
+            textDecoration:"none", 
+            display:"flex", 
+            alignItems:"center",
+            color: isActive ? "green" : "blue"
+        }
+    }
     
     return (
         <>
@@ -57,14 +74,14 @@ const NavigationBar = () => {
                             <Box sx={{display:"flex", alignItems:"center"}}>
                                 <Box>
                                     <NavLink to="/home" 
-                                    style={{color:"white", textDecoration:"none", padding:"10px 10px"}}>
+                                    style={activeNaveItemStyle}>
                                         Home
                                     </NavLink>
                                     <NavLink to="/explore" 
-                                    style={{color:"white", textDecoration:"none", padding:"10px 10px"}}>
+                                    style={activeNaveItemStyle}>
                                         Explore
                                     </NavLink>
-                                    <NavLink to="" style={{textDecoration:"none", padding:"10px 10px"}}>
+                                    <NavLink to="" style={activeNaveItemStyle}>
                                         <Button 
                                             style={{color:"white", textTransform:"capitalize"}}
                                             aria-controls="fade-menu" 
@@ -86,19 +103,19 @@ const NavigationBar = () => {
                                                 <MenuItem onClick={handleCategoryClose}>Item 3</MenuItem>
                                         </Menu>
                                     </NavLink>
-                                    <NavLink to="" style={{color:"white", textDecoration:"none", padding:"10px 10px"}}>Blogs</NavLink>
+                                    <NavLink to="/blog" style={activeNaveItemStyle}>Blogs</NavLink>
                                 </Box>
                             </Box>
                             <Box>
-                                <Badge sx={{m:1}} badgeContent={8} color="primary">
+                                {user.email && <Badge sx={{m:1}} badgeContent={8} color="primary">
                                     <ShoppingCartIcon color="white" />
-                                </Badge>
-                                <Badge sx={{m:1}} badgeContent={108} max={99} color="primary">
+                                </Badge>}
+                                {user.email && <Badge sx={{m:1}} badgeContent={108} max={99} color="primary">
                                     <CircleNotificationsIcon color="white" />
-                                </Badge>
-                                <Badge sx={{m:1}} badgeContent={108} max={99} color="success">
+                                </Badge>}
+                                {user.email && <Badge sx={{m:1}} badgeContent={108} max={99} color="success">
                                     <MailIcon color="action" />
-                                </Badge>
+                                </Badge>}
                                     { ( user.email && 
                                                     <NavLink to="" style={{textDecoration:"none", padding:"10px 10px"}}>
                                                         <Button 
@@ -119,17 +136,17 @@ const NavigationBar = () => {
                                                                 TransitionComponent={Fade}
                                                             >
                                                                 <MenuItem onClick={handleProfileClose}>
-                                                                    <NavLink to="/" style={{textDecoration:"none", display:"flex", alignItems:"center"}}><AccountCircleIcon sx={{mr:2,color:"green"}} fontSize="small" color="green"/>
+                                                                    <NavLink to="/profile" style={activeNestedNavStyle}><AccountCircleIcon sx={{mr:2,color:"green"}} fontSize="small" color="green"/>
                                                                         Profile
                                                                     </NavLink>
                                                                 </MenuItem>
                                                                 <MenuItem onClick={handleProfileClose}>
-                                                                    <NavLink to="/dashboard" style={{textDecoration:"none", display:"flex", alignItems:"center"}}><DashboardCustomizeIcon sx={{mr:2}} fontSize="small" color="primary"/>
+                                                                    <NavLink to="/dashboard" style={activeNestedNavStyle}><DashboardCustomizeIcon sx={{mr:2}} fontSize="small" color="primary"/>
                                                                         Dshboard
                                                                     </NavLink>
                                                                 </MenuItem>
                                                                 <MenuItem onClick={handleProfileClose}>
-                                                                    <NavLink to="/" style={{textDecoration:"none", display:"flex", alignItems:"center"}}><SettingsIcon sx={{mr:2,color:"black"}} fontSize="small" color="green"/>
+                                                                    <NavLink to="/settings" style={activeNestedNavStyle}><SettingsIcon sx={{mr:2,color:"black"}} fontSize="small" color="green"/>
                                                                         Settings
                                                                     </NavLink>
                                                                 </MenuItem>

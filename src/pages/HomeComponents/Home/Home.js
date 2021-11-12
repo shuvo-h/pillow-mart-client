@@ -5,15 +5,17 @@ import FeaturedProducts from "../FeaturedProducts/FeaturedProducts";
 import Banner from '../Banner/Banner';
 import PersonalizePillow from '../PersonalizePillow/PersonalizePillow';
 import ReviewDisplay from '../ReviewDisplay/ReviewDisplay';
+import UpcommingProducts from './UpcommingProducts/UpcommingProducts';
 
 const Home = () => {
     return (
         <div>
             <NavigationBar></NavigationBar>
             <Banner></Banner>
-            <ReviewDisplay></ReviewDisplay>
-            <PersonalizePillow></PersonalizePillow>
             <FeaturedProducts></FeaturedProducts>
+            <UpcommingProducts></UpcommingProducts>
+            <PersonalizePillow></PersonalizePillow>
+            <ReviewDisplay></ReviewDisplay>
             <Footer></Footer>
         </div>
     );

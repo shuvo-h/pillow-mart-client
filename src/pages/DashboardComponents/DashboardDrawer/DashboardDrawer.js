@@ -30,6 +30,7 @@ import MakeAdmin from '../AdminDashboardPages/MakeAdmin/MakeAdmin';
 import ManageProducts from '../AdminDashboardPages/ManageProducts/ManageProducts';
 import { Button } from '@mui/material';
 import useAuth from '../../../hooks/useAuth';
+import DashboardHome from '../DashboardHome/DashboardHome';
 
 
 const drawerWidth = 240;
@@ -134,13 +135,14 @@ function DashboardDrawer(props) {
         
 
         <Routes>
-        <Route path="pay" element={<Pay></Pay>} />
-        <Route path="my-orders" element={<MyOrders></MyOrders>} />
-        <Route path="review" element={<Review></Review>} />
-        <Route path="manage-orders" element={<ManageAllOrders />} />
-        <Route path="add-products" element={<AddProduct />} />
-        <Route path="make-admin" element={<MakeAdmin />} />
-        <Route path="manage-products" element={<ManageProducts />} />
+          <Route path="" element={<DashboardHome></DashboardHome>} />
+          <Route path="pay" element={<Pay></Pay>} />
+          <Route path="my-orders" element={<MyOrders></MyOrders>} />
+          <Route path="review" element={<Review></Review>} />
+          <Route path="manage-orders" element={<ManageAllOrders />} />
+          <Route path="add-products" element={<AddProduct />} />
+          <Route path="make-admin" element={<MakeAdmin />} />
+          <Route path="manage-products" element={<ManageProducts />} />
       </Routes>
 
       </Box>

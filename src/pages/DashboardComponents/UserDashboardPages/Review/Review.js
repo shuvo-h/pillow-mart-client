@@ -38,11 +38,16 @@ const Review = () => {
             .then(data=>{
                 if (data.insertedId) {
                     alert("Review has been posted successfully!");
-                    userAllReviews.push(reviewInfo);
+                    const newReviewList = [reviewInfo,...userAllReviews]
+                    setUserAllReview(newReviewList);
+                    e.target.reset();
+                    // window.location.reload();
                 }
             })
         e.preventDefault();
     }
+
+
     const handleReviewRating = (event, newValue) =>{
         return setReviewValue(newValue)
     }
@@ -65,6 +70,7 @@ const Review = () => {
                         alert("Review Deleted Successfully.");
                         const remainingReviews = userAllReviews.filter(review=>review._id !== id)
                         setUserAllReview(remainingReviews);
+                        setReviewValue(0);
                     }
                 })
         }

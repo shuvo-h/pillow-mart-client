@@ -25,7 +25,7 @@ const orderImgStyle = {
 }
 
 const Order = (props) => {
-    const {customerAddress,customerName,customerPhone,productName, quantity, productId} = props.order;
+    const {customerAddress,customerName,customerPhone,productName, quantity, productId, _id} = props.order;
     const [orderedProduct,setOrderedProduct] = useState({});
     const {photoUrl,price, size, size_metric, Fabric, color} = orderedProduct;
     
@@ -56,7 +56,7 @@ const Order = (props) => {
                 
             </Grid>
             <Grid item xs={12} sm={3}>
-                <Box sx={{display:"flex", justifyContent:"center", alignItems:"center"}}><Button sx={cancelBtnStyle} variant="outlined">Cancel Order</Button></Box>
+                <Box sx={{display:"flex", justifyContent:"center", alignItems:"center"}}><Button sx={cancelBtnStyle} onClick={()=>props.handleOrderDelete(_id)} variant="outlined">Cancel Order</Button></Box>
             </Grid>
         </Grid>
     );

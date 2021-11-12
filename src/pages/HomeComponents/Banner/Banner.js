@@ -11,8 +11,11 @@ const Banner = () => {
                     <img width="100%" height="100%" src="https://i.ibb.co/vx5pQRG/banner-1.png" alt="" />
                 </Grid>
                 <Grid item xs={12} sm={4}>
+                    <Typography sx={{fontSize:{xs:"20px", md:"30px"},color:"navy",fontWeight:"700", textAlign:"center",lineHeight:1}} gutterBottom component="div">
+                        Welcome To PillowMart
+                    </Typography>
                     <Typography sx={{fontSize:{xs:"20px", md:"30px"},fontWeight:"700", textAlign:"center",lineHeight:1}} gutterBottom component="div">
-                        Your Comfort <br /> is <br /> Our business
+                        Your Comfort is Our business
                     </Typography>
                     <Typography sx={{fontSize:{xs:"20px", md:"30px"}, textAlign:"center", mt:{xs:3, md:8}}} component="div">
                      We ensure: <br />

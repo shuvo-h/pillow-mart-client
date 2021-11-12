@@ -13,8 +13,8 @@ const ReviewDisplay = () => {
             .then(data=>setReviews(data.reverse()))
     },[])
     return (
-        <Box>
-                <Typography sx={{py:5,textAlign:"center", backgroundColor:"AliceBlue"}} variant="h4">Customer's Review</Typography>
+        <Box sx={{py:2,backgroundColor:"Gainsboro"}}>
+                <Typography sx={{py:5,textAlign:"center"}} variant="h4">Customer's Review</Typography>
             <Container>
                 {
                     reviews.map(review=><Review review={review} key={review._id}></Review>)
