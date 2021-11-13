@@ -5,7 +5,7 @@ import React from 'react';
 const Review = (props) => {
     const {revComment, revDate, revImg, revNamer, revValue} = props.review || {};
     return (
-        <Grid container spacing={2} sx={{m:1}} >
+        <Grid container spacing={2} sx={{m:{sm:1},my:{xs:1}}} >
                 <Grid item xs={3} sm={2}>
                     <Box sx={{display:"flex", justifyContent:{xs:"center", sm:"flex-end"}}}>
                         <img style={{width:"50px", height:"50px",borderRadius:"50%"}} src={revImg} alt="" />
@@ -17,7 +17,7 @@ const Review = (props) => {
                         <Typography variant="body2">{revDate}</Typography>
                 </Grid>
                 <Grid item xs={12} sm={8}>
-                    <Typography variant="body2">{revComment}</Typography>
+                    <Typography sx={{}} variant="body2">{revComment}</Typography>
                 </Grid>
             </Grid>
     );
