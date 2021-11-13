@@ -27,7 +27,7 @@ const LoginForm = () => {
         e.preventDefault();
     }
     return (
-        <Box sx={{p:2, display:"flex", flexDirection:"column",alignItems:"center"}}>
+        <Box sx={{p:2, display:"flex", flexDirection:"column",alignItems:"center", textAlign:"center"}}>
             <Typography variant="h4" component="div">
                 Welcome Back 
             </Typography>
@@ -36,9 +36,9 @@ const LoginForm = () => {
             </Typography>
             <Box  sx={{mt:3, width:"fit-content"}}>
                 <form sx={{display:"flex", flexDirection: 'column' }} onSubmit={handleLogin}> 
-                    <Box ><TextField sx={{width:"350px"}} onBlur={handleOnBlur} name="email" id="standard-basic" label="Email" variant="standard" /></Box>
-                    <Box  sx={{m:1}}><TextField sx={{width:"350px"}} onBlur={handleOnBlur} name="password" id="standard-basic" label="Password" variant="standard" /></Box>
-                    <Button sx={{m:1}} type="submit" variant="contained">Login</Button>
+                    <Box><TextField sx={{width:"350px"}} onBlur={handleOnBlur} name="email" id="standard-basic" label="Email" variant="standard" /></Box>
+                    <Box><TextField sx={{width:"350px"}} onBlur={handleOnBlur} name="password" id="standard-basic" label="Password" variant="standard" /></Box>
+                    <Button sx={{display:"block", margin:"10px auto"}} type="submit" variant="contained">Login</Button>
                 </form>
                 <Typography variant="body2" component="div">
                     Don't have an account?
