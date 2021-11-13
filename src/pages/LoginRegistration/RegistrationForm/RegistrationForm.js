@@ -32,12 +32,12 @@ const RegistrationForm = () => {
             </Typography>
             <Box sx={{p:2, borderRadius:"10px", width:"fit-content", boxShadow:"2px 2px 10px 1px Magenta", backgroundColor:"Lavender"}}>
                 <form sx={{display:"flex", flexDirection: 'column' }} onSubmit={handleRegistration}> 
-                    <Box sx={{my:1}}><TextField sx={{width:"350px"}} onBlur={handleOnBlur} name="name" type="text" id="name" label="Full Name" variant="standard" /></Box>
-                    <Box sx={{my:1}}><TextField sx={{width:"350px"}} onBlur={handleOnBlur} name="email" type="text" id="email" label="Email" variant="standard" /></Box>
-                    <Box sx={{my:1}}><TextField sx={{width:"350px"}} onBlur={handleOnBlur} name="password"  type="password" id="password" label="Password" variant="standard" /></Box>
-                    <Box sx={{my:1}}><TextField sx={{width:"350px"}} onBlur={handleOnBlur} name="confirmPassword" type="password" id="confirm-password" label="Confirm Password" variant="standard" /></Box>
-                    <Box sx={{my:1}}><TextField sx={{width:"350px"}} onBlur={handleOnBlur} name="phoneNumber" type="number" id="phone-number" label="Phone Number" variant="standard" /></Box>
-                    <Box sx={{my:1}}><TextField sx={{width:"350px"}} onBlur={handleOnBlur} name="imgUrl" type="text" id="photourl" label="Photo URL" variant="standard" /></Box>
+                    <Box sx={{my:1}}><TextField sx={{width:{xs:"250px",sm:"350px"}}} onBlur={handleOnBlur} name="name" type="text" id="name" label="Full Name" variant="standard" /></Box>
+                    <Box sx={{my:1}}><TextField sx={{width:{xs:"250px",sm:"350px"}}} onBlur={handleOnBlur} name="email" type="text" id="email" label="Email" variant="standard" /></Box>
+                    <Box sx={{my:1}}><TextField sx={{width:{xs:"250px",sm:"350px"}}} onBlur={handleOnBlur} name="password"  type="password" id="password" label="Password" variant="standard" /></Box>
+                    <Box sx={{my:1}}><TextField sx={{width:{xs:"250px",sm:"350px"}}} onBlur={handleOnBlur} name="confirmPassword" type="password" id="confirm-password" label="Confirm Password" variant="standard" /></Box>
+                    <Box sx={{my:1}}><TextField sx={{width:{xs:"250px",sm:"350px"}}} onBlur={handleOnBlur} name="phoneNumber" type="number" id="phone-number" label="Phone Number" variant="standard" /></Box>
+                    <Box sx={{my:1}}><TextField sx={{width:{xs:"250px",sm:"350px"}}} onBlur={handleOnBlur} name="imgUrl" type="text" id="photourl" label="Photo URL" variant="standard" /></Box>
                     <Button sx={{my:3}} type="submit" variant="contained">Create an account</Button>
                 </form>
                 <Typography variant="body2" component="div">

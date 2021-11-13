@@ -11,7 +11,7 @@ const Pay = () => {
             <Typography variant="h4"> Hey {user.displayName} <EmojiEmotionsIcon color="warning" />  </Typography>
             <Typography variant="h4"> Payment System is Comming Soon!  </Typography>
             <div>
-                <img style={{display:"block", margin:"auto"}} src="https://i.ibb.co/dL5KBC6/payment-syatem.jpg" alt="" />
+                <img style={{width:"100%",maxWidth:"600px", display:"block", margin:"auto"}} src="https://i.ibb.co/dL5KBC6/payment-syatem.jpg" alt="" />
             </div>
         </Box>
     );

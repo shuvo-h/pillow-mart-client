@@ -1,5 +1,6 @@
 import { Container, Grid, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
+import Footer from '../../Shared/FooterComponents/Footer/Footer';
 import NavigationBar from "../../Shared/NavBar/NavigationBar/NavigationBar";
 import ExploreProduct from '../ExploreProduct/ExploreProduct';
 
@@ -13,7 +14,7 @@ const ExploreProducts = () => {
     return (
         <>
             <NavigationBar></NavigationBar>
-            <Container sx={{mt:8}}>
+            <Container sx={{mt:8,pb:4}}>
                 <Typography sx={{py:3}} gutterBottom variant="h4" component="div">
                     All Pillows
                 </Typography>
@@ -23,6 +24,7 @@ const ExploreProducts = () => {
                     }
                 </Grid>
             </Container>
+            <Footer></Footer>
         </>
     );
 };

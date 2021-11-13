@@ -4,6 +4,7 @@ import { useParams } from 'react-router';
 import NavigationBar from '../../Shared/NavBar/NavigationBar/NavigationBar';
 import BeenhereIcon from '@mui/icons-material/Beenhere';
 import PurchaseForm from '../PurchaseForm/PurchaseForm';
+import Footer from "../../Shared/FooterComponents/Footer/Footer";
 
 const PurchaseInfo = () => {
     const {id} = useParams();
@@ -17,7 +18,7 @@ const PurchaseInfo = () => {
     return (
         <>
             <NavigationBar></NavigationBar>
-            <Container sx={{mt:8}}>
+            <Container sx={{mt:8,pb:3}}>
                 <Grid container spacing={2}>
                     <Grid item xs={12} sm={6}>
                         <img width="100%" src={photoUrl} alt="" />
@@ -38,6 +39,7 @@ const PurchaseInfo = () => {
                 </Grid>
                 <PurchaseForm title={title} productId={_id}></PurchaseForm>
             </Container>
+            <Footer></Footer>
         </>
     );
 };

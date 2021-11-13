@@ -13,7 +13,7 @@ const Login = () => {
                 <Grid item xs={12} md={6}>
                     <LoginForm></LoginForm>
                 </Grid>
-                <Grid item xs={12} md={6}>
+                <Grid item xs={12} md={6} sx={{display:{xs:"none",sm:"block"}}}>
                     
                     <Box> <img src={loginBanner} alt="" /> </Box>
                 </Grid>

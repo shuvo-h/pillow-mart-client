@@ -36,8 +36,8 @@ const LoginForm = () => {
             </Typography>
             <Box  sx={{mt:3, width:"fit-content"}}>
                 <form sx={{display:"flex", flexDirection: 'column' }} onSubmit={handleLogin}> 
-                    <Box><TextField sx={{width:"350px"}} onBlur={handleOnBlur} name="email" id="standard-basic" label="Email" variant="standard" /></Box>
-                    <Box><TextField sx={{width:"350px"}} onBlur={handleOnBlur} name="password" id="standard-basic" label="Password" variant="standard" /></Box>
+                    <Box><TextField sx={{width:{xs:"250px",sm:"350px"}}} onBlur={handleOnBlur} name="email" type="email" id="standard-basic" label="Email" variant="standard" required/></Box>
+                    <Box><TextField sx={{width:{xs:"250px",sm:"350px"}}} onBlur={handleOnBlur} name="password" type="password" id="standard-basic" label="Password" variant="standard" required /></Box>
                     <Typography color="red">{error}</Typography>
                     <Button sx={{display:"block", margin:"10px auto"}} type="submit" variant="contained">Login</Button>
                 </form>

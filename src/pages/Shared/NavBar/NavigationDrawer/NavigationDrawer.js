@@ -6,8 +6,10 @@ import { ListItemButton } from '@mui/material';
 import Collapse from '@mui/material/Collapse';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
+import useAuth from "../../../../hooks/useAuth";
 
 const NavigationDrawer = ({openNavDrawer,setOpenNavDrawer}) => {
+    const {user,logOut} = useAuth();
     const [categoryOpen, setCategoryOpen] = React.useState(false);
     const [profileOpen, setProfileOpen] = React.useState(false);
 
@@ -68,55 +70,59 @@ const NavigationDrawer = ({openNavDrawer,setOpenNavDrawer}) => {
                             Blogs
                     </NavLink>
                 </ListItemButton>
-                <ListItemButton divider onClick={handleProfileClick}>
-                    <NavLink to="" 
-                        style={{color:"black", textDecoration:"none", padding:"10px 10px"}}>
-                            Profile(img)
-                    </NavLink>
-                    {profileOpen ? <ExpandLess /> : <ExpandMore />}
-                </ListItemButton>
-                <Collapse in={profileOpen} timeout="auto" unmountOnExit>
-                    <List component="div" disablePadding>
-                        <ListItemButton sx={{ pl: 4 }}>
-                            <List>
-                                <ListItemButton>
-                                    <NavLink to="" 
-                                        onClick={()=>setOpenNavDrawer(false)}
-                                        style={{color:"black", textDecoration:"none", padding:"10px 10px"}}>
-                                            Profile
-                                    </NavLink>
-                                </ListItemButton>
-                                <ListItemButton>
-                                    <NavLink to="/dashboard" 
-                                        onClick={()=>setOpenNavDrawer(false)}
-                                        style={{color:"black", textDecoration:"none", padding:"10px 10px"}}>
-                                            Dshboard
-                                    </NavLink>
-                                </ListItemButton>
-                                <ListItemButton>
-                                    <NavLink to="" 
-                                        onClick={()=>setOpenNavDrawer(false)}
-                                        style={{color:"black", textDecoration:"none", padding:"10px 10px"}}>
-                                            Settings
-                                    </NavLink>
-                                </ListItemButton>
-                                <ListItemButton>
-                                    <NavLink to="" 
-                                        onClick={()=>setOpenNavDrawer(false)}
-                                        style={{color:"black", textDecoration:"none", padding:"10px 10px"}}>
-                                            Logout
-                                    </NavLink>
-                                </ListItemButton>
-                            </List>
-                        </ListItemButton>
-                    </List>
-                </Collapse>
-                <ListItemButton divider onClick={()=>setOpenNavDrawer(false)}>
+                {(user.email && <>
+                    <ListItemButton divider onClick={handleProfileClick}>
+                        <NavLink to="" 
+                            style={{color:"black", textDecoration:"none", padding:"10px 10px"}}>
+                                {user.displayName}
+                        </NavLink>
+                        {profileOpen ? <ExpandLess /> : <ExpandMore />}
+                    </ListItemButton>
+                    <Collapse in={profileOpen} timeout="auto" unmountOnExit>
+                        <List component="div" disablePadding>
+                            <ListItemButton sx={{ pl: 4 }}>
+                                <List>
+                                    <ListItemButton>
+                                        <NavLink to="" 
+                                            onClick={()=>setOpenNavDrawer(false)}
+                                            style={{color:"black", textDecoration:"none", padding:"10px 10px"}}>
+                                                Profile
+                                        </NavLink>
+                                    </ListItemButton>
+                                    <ListItemButton>
+                                        <NavLink to="/dashboard" 
+                                            onClick={()=>setOpenNavDrawer(false)}
+                                            style={{color:"black", textDecoration:"none", padding:"10px 10px"}}>
+                                                Dshboard
+                                        </NavLink>
+                                    </ListItemButton>
+                                    <ListItemButton>
+                                        <NavLink to="" 
+                                            onClick={()=>setOpenNavDrawer(false)}
+                                            style={{color:"black", textDecoration:"none", padding:"10px 10px"}}>
+                                                Settings
+                                        </NavLink>
+                                    </ListItemButton>
+                                    <ListItemButton>
+                                        <NavLink to="" 
+                                            onClick={()=>{setOpenNavDrawer(false);logOut();}}
+                                            style={{color:"black", textDecoration:"none", padding:"10px 10px"}}>
+                                                Logout
+                                        </NavLink>
+                                    </ListItemButton>
+                                </List>
+                            </ListItemButton>
+                        </List>
+                    </Collapse>
+                </>)}
+            {
+                !user.email && <ListItemButton divider onClick={()=>setOpenNavDrawer(false)}>
                     <NavLink to="/login" 
                         style={{color:"black", textDecoration:"none", padding:"10px 10px"}}>
                             Login
                     </NavLink>
                 </ListItemButton>
+             }
             </List>
         </Drawer>
     );

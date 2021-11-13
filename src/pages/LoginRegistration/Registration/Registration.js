@@ -15,7 +15,7 @@ const Registration = () => {
                 </Grid>
                 <Grid item xs={12} md={6}>
                     
-                    <Box> <img src={bannerbgRegistration} alt="" /> </Box>
+                    <Box> <img style={{width:"100%",maxWidth:"600px"}} src={bannerbgRegistration} alt="" /> </Box>
                 </Grid>
             </Grid>
         </div>
