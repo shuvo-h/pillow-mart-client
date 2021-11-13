@@ -52,17 +52,18 @@ const OrderToken = (props) => {
                 
             </Grid>
             <Grid item xs={12} md={2}>
-                <Box sx={{width:"100px", height:"100px"}}>
+                <Box sx={{width:"100px", height:"100px", margin:"auto"}}>
                     <img style={{width:"100%", height:"100%"}} src={photoUrl} alt="" />
-                    Status: {status}
+                    
                 </Box>
             </Grid>
             <Grid item xs={12} md={2}>
+                <Typography variant="body1">Status: {status} </Typography>
                 {
                     status === "Pending" ?
                         <Button sx={{backgroundColor:"Gold"}} onClick={()=>handleDelivery(_id)} variant="outlined">Confirm shipping</Button>
                     : <Button sx={{cursor:"not-allowed", backgroundColor:"SpringGreen"}} variant="outlined">Delivered</Button>
-                }
+                } <br />
                 <Button sx={{mt:2,backgroundColor:"Tomato", }} onClick={()=>props.handleOrderDelete(_id)} variant="outlined">Cancel Order</Button>
             </Grid>
         </Grid>

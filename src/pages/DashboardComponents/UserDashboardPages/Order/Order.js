@@ -25,9 +25,9 @@ const orderImgStyle = {
 }
 
 const Order = (props) => {
-    const {customerAddress,customerName,customerPhone,productName, quantity, productId, _id} = props.order;
+    const {customerAddress,customerName,customerPhone,productName, quantity, productId,status, _id} = props.order;
     const [orderedProduct,setOrderedProduct] = useState({});
-    const {photoUrl,price, size, size_metric, Fabric, color} = orderedProduct;
+    const {photoUrl,price} = orderedProduct;
     
     useEffect(()=>{
         fetch(`https://fast-bastion-88806.herokuapp.com/products/${productId}`)
@@ -56,7 +56,10 @@ const Order = (props) => {
                 
             </Grid>
             <Grid item xs={12} sm={3}>
-                <Box sx={{display:"flex", justifyContent:"center", alignItems:"center"}}><Button sx={cancelBtnStyle} onClick={()=>props.handleOrderDelete(_id)} variant="outlined">Cancel Order</Button></Box>
+                <Box sx={{display:"flex", justifyContent:"center", alignItems:"center", flexDirection:"column"}}>
+                    <Typography sx={{p:0.5, m:0.5, color:"DarkViolet", border:"1px dashed", borderRadius:"15px" }}>Status: {status}</Typography>
+                    <Button sx={cancelBtnStyle} onClick={()=>props.handleOrderDelete(_id)} variant="outlined">Cancel Order</Button>
+                </Box>
             </Grid>
         </Grid>
     );

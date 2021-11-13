@@ -1,13 +1,20 @@
 import { Card, CardActions, CardContent, CardMedia, Grid, Typography, Button } from '@mui/material';
-import { Box } from '@mui/system';
 import React from 'react';
 import { Link } from 'react-router-dom';
+
+const cardStyle = {
+    maxWidth: 345,
+    "&:hover": {
+        backgroundColor :"LightCyan",
+        boxShadow:"0 0 2px 2px YellowGreen"
+    }
+}
 
 const FeaturedProduct = (props) => {
     const {title,str,photoUrl,price,_id} = props.featuredProduct;
     return (
         <Grid item xs={12} sm={6} md={4}>
-            <Card sx={{ maxWidth: 345 }}>
+            <Card sx={cardStyle}>
                 <CardMedia component="img" height="200" width="100%" image={photoUrl}  alt="green iguana"/>
                 <CardContent sx={{height:{sm:"150px",md:"120px"}}}>
                     <Typography gutterBottom variant="h5" component="div">{title}</Typography>

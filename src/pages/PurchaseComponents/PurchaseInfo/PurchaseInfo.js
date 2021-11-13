@@ -1,4 +1,4 @@
-import { Container, Grid, List, ListItem, ListItemText, Typography } from '@mui/material';
+import { Container, Grid, List, ListItem, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import NavigationBar from '../../Shared/NavBar/NavigationBar/NavigationBar';

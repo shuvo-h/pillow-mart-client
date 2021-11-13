@@ -12,7 +12,6 @@ import Fade from '@mui/material/Fade';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import NavigationDrawer from '../NavigationDrawer/NavigationDrawer';
 import LogoutIcon from '@mui/icons-material/Logout';
-import ListItemIcon from '@mui/material/ListItemIcon';
 import SettingsIcon from '@mui/icons-material/Settings';
 import DashboardCustomizeIcon from '@mui/icons-material/DashboardCustomize';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';

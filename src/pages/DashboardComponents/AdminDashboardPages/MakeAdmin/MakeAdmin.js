@@ -40,7 +40,7 @@ const MakeAdmin = () => {
             }
         })
     }
-    // console.log(ckeckExistUser("hritik@roshan.com"));
+    
     return (
         <Box sx={{p:2, display:"flex", flexDirection:"column",alignItems:"center"}}>
             <Typography variant="h4" component="div">

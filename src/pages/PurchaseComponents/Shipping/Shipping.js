@@ -8,8 +8,8 @@ const Shipping = () => {
     const {orderId} = useParams();
     const [orderInfo,setOrderInfo] = useState({});
     const [orderedProductInfo,setOrderedProductInfo] = useState({});
-    const {customerAddress, customerEmail, customerName,customerPhone,productName,quantity, productId } = orderInfo || {};
-    const {Fabric, color,pattern, photoUrl,price,shape,size,size_metric,title} = orderedProductInfo || {};
+    const {customerAddress, customerEmail, customerName,customerPhone,quantity, productId } = orderInfo || {};
+    const { color, photoUrl,price,title} = orderedProductInfo || {};
     
     useEffect(()=>{
         fetch(`https://fast-bastion-88806.herokuapp.com/orders/${orderId}`)

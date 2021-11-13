@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, updateProfile,signInWithEmailAndPassword,signOut   } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, updateProfile,signInWithEmailAndPassword,signOut,signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import firebaseInitialization from "../firebase/firebase.init";
 
 firebaseInitialization();
@@ -10,12 +10,13 @@ const useFirebase = () => {
     const [isLoading,setIsloading]= useState(true);
 
     const auth = getAuth();
+    const googleProvider = new GoogleAuthProvider();
     const registerNewUser = (newEmail,newPassword, newName, newPhotoUrl, newPhoneNumber,navigate,userFullObjInfo,e) =>{
-        setIsloading(true)
+        setIsloading(true);
+        setError("")
         createUserWithEmailAndPassword(auth, newEmail, newPassword,newName,newPhotoUrl, newPhoneNumber,navigate,userFullObjInfo)
             .then((userCredential)=>{
                 setUser(userCredential.user);
-                console.log(userCredential.user);
                 updateProfile(auth.currentUser,{
                     displayName: newName,
                     photoURL: newPhotoUrl,
@@ -32,6 +33,7 @@ const useFirebase = () => {
 
     const loginExistUser = (existEmail,existPassword,navigate,locationFrom) =>{
         setIsloading(true);
+        setError("");
         signInWithEmailAndPassword(auth,existEmail,existPassword)
             .then(userCrediential =>{
                 if (userCrediential.user) {
@@ -55,8 +57,27 @@ const useFirebase = () => {
         })
     },[auth])
 
+    const signInWithGoogle = (navigate,locationFrom) =>{
+        setError("")
+        setIsloading(true);
+        signInWithPopup(auth,googleProvider)
+            .then(result =>{
+                fetch(`https://fast-bastion-88806.herokuapp.com/users?existEmail=${result.user.email}`)
+                    .then(res=>res.json())
+                    .then(data=>{
+                        navigate(locationFrom, {replace: true})
+                        if (data?.email !== result.user.email) {
+                            saveRegData( result.user)
+                        }
+                    })
+            })
+            .catch(error=>setError(error.message))
+            .finally(()=>setIsloading(false))
+    }
+
     const logOut = () =>{
         setIsloading(true);
+        setError("");
         signOut(auth)
             .then(()=>{
                 setUser({});
@@ -79,7 +100,7 @@ const useFirebase = () => {
             .then(data=>{
                 if (data.insertedId) {
                     alert("Registration Successful!");
-                    e.target.reset();
+                    e?.target?.reset();
                 }
             })
         return;
@@ -107,6 +128,7 @@ const useFirebase = () => {
         setError,
         loginExistUser,
         registerNewUser,
+        signInWithGoogle,
     }
 };
 

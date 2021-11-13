@@ -9,7 +9,7 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import useAuth from "../../../hooks/useAuth";
 
 const LoginForm = () => {
-    const {loginExistUser} = useAuth();
+    const {loginExistUser, signInWithGoogle, error} = useAuth();
     const navigate = useNavigate();
     const location = useLocation();
     let locationFrom = location.state?.from?.pathname || "/home";
@@ -38,6 +38,7 @@ const LoginForm = () => {
                 <form sx={{display:"flex", flexDirection: 'column' }} onSubmit={handleLogin}> 
                     <Box><TextField sx={{width:"350px"}} onBlur={handleOnBlur} name="email" id="standard-basic" label="Email" variant="standard" /></Box>
                     <Box><TextField sx={{width:"350px"}} onBlur={handleOnBlur} name="password" id="standard-basic" label="Password" variant="standard" /></Box>
+                    <Typography color="red">{error}</Typography>
                     <Button sx={{display:"block", margin:"10px auto"}} type="submit" variant="contained">Login</Button>
                 </form>
                 <Typography variant="body2" component="div">
@@ -55,7 +56,7 @@ const LoginForm = () => {
                 <Box
                     sx={{ display: 'flex', flexDirection:"column" ,justifyContent: 'center', p: 1, m: 1, bgcolor: 'background.paper',}}
                 >
-                    <Button sx={{mx:1, my:1}} variant="outlined"><GoogleIcon style={{color:"Goldenrod"}} sx={{mr:3}} fontSize={"large"} />Continue with Google </Button>
+                    <Button sx={{mx:1, my:1}} onClick={()=>signInWithGoogle(navigate,locationFrom)} variant="outlined"><GoogleIcon style={{color:"Goldenrod"}} sx={{mr:3}} fontSize={"large"} />Continue with Google </Button>
                     <Button sx={{mx:1}} variant="outlined"><FacebookIcon sx={{mr:3}} fontSize={"large"} />Continue with Facebook</Button>
                     <Button sx={{mx:1}} variant="outlined"><TwitterIcon sx={{mr:3}} style={{color:"DarkTurquoise"}} fontSize={"large"} />Continue with Twitter</Button>
                     <Button sx={{mx:1}} variant="outlined"><LinkedInIcon sx={{mr:3}} fontSize={"large"} />Continue with Linkdin</Button>
